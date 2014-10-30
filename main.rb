@@ -1,6 +1,14 @@
 require 'bundler'
 Bundler.require
 
+before do
+  A_LINE = %w(あ か さ た な は ま や ら わ が ざ だ ば ぱ ぁ ゃ)
+  I_LINE = %w(い き し ち に ひ み り ゐ ぎ じ ぢ び ぴ ぃ)
+  U_LINE = %w(う く す つ ぬ ふ む ゆ る ぐ ず づ ぶ ぷ ぅ っ ゅ)
+  E_LINE = %w(え け せ て ね へ め れ ゑ げ ぜ で べ ぺ ぇ)
+  O_LINE = %w(お こ そ と の ほ も よ ろ を ご ぞ ど ぼ ぽ ぉ ょ)
+end
+
 get '/' do
   slim :index
 end
@@ -13,11 +21,6 @@ post '/divine' do
 end
 
 private
-A_LINE = %w(あ か さ た な は ま や ら わ が ざ だ ば ぱ ぁ ゃ)
-I_LINE = %w(い き し ち に ひ み り ゐ ぎ じ ぢ び ぴ ぃ)
-U_LINE = %w(う く す つ ぬ ふ む ゆ る ぐ ず づ ぶ ぷ ぅ っ ゅ)
-E_LINE = %w(え け せ て ね へ め れ ゑ げ ぜ で べ ぺ ぇ)
-O_LINE = %w(お こ そ と の ほ も よ ろ を ご ぞ ど ぼ ぽ ぉ ょ)
 
 # 名前を数字に変換する
 def names_to_num(name)
