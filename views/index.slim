@@ -2,15 +2,21 @@ doctype html
 html lang="ja"
   head
     meta charset="utf-8"
-    title あいしょううらない
+    title 相性占い
+    script src="js/jquery-2.1.1.min.js"
+    script src="js/divine.js"
   body
     .container
       .notebook
         .description
-          p 
-           | 相性を占いたい二人の名前をひらがなで入力してね
-        .form
+          p 相性を占いたい二人の名前をひらがなで入力してね
+        form
+          input#name1 type="text" placeholder="一人目の名前(ひらがな)"
+          input#name2 type="text" placeholder="二人目の名前(ひらがな)"
+          input#divine-button type="submit" value="占う"
+          input#reset-button  type="reset"  value="リセット"
         .calc
+        / ここにサーバから返却されるデータをいい感じに表示する
         .result
 
 
