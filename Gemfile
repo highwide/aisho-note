@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
-gem 'sinatra', require: 'sinatra/base'
+gem 'sinatra'
 gem 'slim'
 gem 'thin'
 
-group 'development' do
-  gem 'sinatra-contrib', require: 'sinatra/reloader'
+group :development do
   gem 'pry'
+  gem 'sinatra-contrib'
 end
