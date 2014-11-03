@@ -1,20 +1,37 @@
 $(function(){
   $('#divine-button').click(function(){
+    resetResult();
+    
     var name1 = $('#name1').val();
     var name2 = $('#name2').val();
+
     var request = $.ajax({
       type: 'POST',
       url: '/divine',
+      datatype: 'json',
       data: {
         name1: name1,
         name2: name2
       },
-      success: function(){
-        console.log('success');
+      success: function(json){
+        for(var i = 0; i < json.calcAry.length; i++) {
+          $('#calc').append('<p>' + json.calcAry[i] + '</p>');
+        } 
+        $('#result').append('<p>ふたりの相性は' + json.result + '%だよ</p>');
       },
       error: function(){
-        console.log('error');
+        alert('通信に失敗してしまいました。あとでやり直してね。');
       }
     });
   });
+
+  $('#reset-button').click(function(){
+    resetResult();
+  });
+
 });
+
+function resetResult(){
+   $('#calc').html('');
+   $('#result').html('');
+} 

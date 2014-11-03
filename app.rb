@@ -2,17 +2,12 @@ require 'json'
 require 'bundler'
 Bundler.require
 
-
 get '/' do
   slim :index
 end
 
 post '/divine' do
   content_type :json
-  res = {foo: params[:name1], bar: params[:name2]}
-  binding.pry
-  res.to_json
-=begin
   result_num_line = [names_to_num(params[:name1]), names_to_num(params[:name2])].flatten
   result_num = []
   loop do
@@ -20,8 +15,7 @@ post '/divine' do
     break if result_num_line.join.to_i <= 100
     result_num_line = calc(result_num_line)
   end
-  {result: result_num}.to_json
-=end
+  {calcAry: result_num, result: result_num.last.to_i}.to_json
 end
 
 private
@@ -68,5 +62,3 @@ def calc(num_ary)
   end
   new_ary
 end
-
-# 
