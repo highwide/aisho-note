@@ -1,5 +1,6 @@
 $(function(){
   $('#divine-button').click(function(){
+<<<<<<< HEAD
     resetResult();
     
     var name1 = $('#name1').val();

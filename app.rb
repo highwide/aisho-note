@@ -63,3 +63,8 @@ def calc(num_ary)
   end
   new_ary
 end
+<<<<<<< HEAD:app.rb
+=======
+
+# 
+>>>>>>> a4317b7a49a0ac9e9846af31d47a20fd248d9d3e:app.rb
