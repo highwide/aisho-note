@@ -7,15 +7,10 @@ get '/' do
 end
 
 post '/divine' do
+  res = divine(params[:name1], params[:name2])
+
   content_type :json
-  result_num_line = [names_to_num(params[:name1]), names_to_num(params[:name2])].flatten
-  result_num = []
-  loop do
-    result_num << result_num_line.join
-    break if result_num_line.join.to_i <= 100
-    result_num_line = calc(result_num_line)
-  end
-  {calcAry: result_num, result: result_num.last.to_i}.to_json
+  res.to_json
 end
 
 private
@@ -24,6 +19,23 @@ I_LINE = %w(い き し ち に ひ み り ゐ ぎ じ ぢ び ぴ ぃ)
 U_LINE = %w(う く す つ ぬ ふ む ゆ る ぐ ず づ ぶ ぷ ぅ っ ゅ)
 E_LINE = %w(え け せ て ね へ め れ ゑ げ ぜ で べ ぺ ぇ)
 O_LINE = %w(お こ そ と の ほ も よ ろ を ご ぞ ど ぼ ぽ ぉ ょ)
+
+def divine(name1, name2)
+  # 名前を数字に変換して結果が100以下になるまで計算
+  begin
+    result_num_line = [names_to_num(name1), names_to_num(name2)].flatten
+    result_num = []
+    loop do
+      result_num << result_num_line.join
+      break if result_num_line.join.to_i <= 100
+      result_num_line = calc(result_num_line)
+    end
+    @result = "ふたりの相性は#{result_num.last.to_i}%だよ！"
+  rescue
+    result_num = ''
+  end
+  {calcAry: result_num, result: @result}
+end
 
 # 名前を数字に変換する
 def names_to_num(name)
@@ -49,8 +61,8 @@ def hiragana_to_num(char)
   elsif char == 'ん'
     0
   else
-    # todo Add error handling
-    puts '変換できない文字があるよ'
+    @result = '変換できない文字があるよ。名前は全部ひらがなで入力してね。'
+    raise "文字変換エラー #{char}"
   end
 end
 
