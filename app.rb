@@ -6,6 +6,10 @@ get '/' do
   slim :index
 end
 
+get %r{^/(.*)\.css$} do
+  scss :"style/#{params[:captures].first}"
+end
+
 post '/divine' do
   res = divine(params[:name1], params[:name2])
 
