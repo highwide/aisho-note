@@ -17,7 +17,7 @@ $(function(){
         for(var i = 0; i < json.calcAry.length; i++) {
           $('#calc').append('<p>' + json.calcAry[i] + '</p>');
         } 
-        $('#result').append('<p>ふたりの相性は' + json.result + '%だよ</p>');
+        $('#result').append('<p>' + json.result + '</p>');
       },
       error: function(){
         alert('通信に失敗してしまいました。あとでやり直してね。');
