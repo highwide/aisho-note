@@ -30,3 +30,6 @@ doc/
 
 # Ignore rbenv file
 .ruby-version
+
+# Ignore cache
+.sass-cache
