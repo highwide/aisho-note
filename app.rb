@@ -6,8 +6,8 @@ get '/' do
   slim :index
 end
 
-get %r{^/(.*)\.css$} do
-  scss :"style/#{params[:captures].first}"
+get '/main.css' do
+  scss :'style/main'
 end
 
 post '/divine' do
